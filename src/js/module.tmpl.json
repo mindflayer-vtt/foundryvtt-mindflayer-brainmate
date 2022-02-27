@@ -1,9 +1,10 @@
 {
+  "$schema": "https://raw.githubusercontent.com/typhonjs-fvtt-lib/validate-manifest/main/schema/strict/module.json",
   "name": "mindflayer-brainmate",
   "title": "Mind Flayer - Brainmate",
   "description": "A Foundry VTT module, which redesigns the UI to be usable on a tablet or phone.",
-  "minimumCoreVersion": "9.0",
-  "compatibleCoreVersion": "9.249",
+  "minimumCoreVersion": "9.0.0",
+  "compatibleCoreVersion": "9.249.0",
   "author": "749, shawly",
   "authors": [
     {
@@ -27,12 +28,11 @@
       "path": "./lang/en.json"
     }
   ],
-  "dependencies": [],
-  "media": [],
   "url": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate",
   "manifest": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/releases/latest/download/module.json",
   "download": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/releases/download/v{{version}}/module.zip",
+  "changelog": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/releases",
   "bugs": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/issues",
   "license": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/blob/main/LICENSE",
-  "readme": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/blob/main/README.md"
+  "readme": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate#readme"
 }
