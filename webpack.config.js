@@ -96,8 +96,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "src/lang", to: "lang" },
-        { from: "LICENSE", to: "LICENSE" },
-        { from: "README.md", to: "README.md" },
+        { from: "LICENSE", to: "." },
+        { from: "README.md", to: "." },
       ],
     }),
     new ModuleJsonWebpackPlugin(),
