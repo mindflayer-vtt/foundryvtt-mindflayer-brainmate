@@ -14,11 +14,17 @@
   #hotbar
     width: 100%
     height: var(--hotbar-height)
+    margin: 2px 0
 
     #macro-list
       grid-template-columns: repeat( 10, 10% )
 
     .macro
+      width: 100%
+      margin: 0 2px
+    
+    .page-control[data-action="page-up"]
+      display: none
 
 
   #hotbar-directory-controls
@@ -34,22 +40,28 @@
       height: 100%
       width: 100%
 
-      .tabs .item[data-tab=scenes],
-      .tabs .item[data-tab=items],
-      .tabs .item[data-tab=journal],
-      .tabs .item[data-tab=tables],
-      .tabs .item[data-tab=cards],
-      .tabs .item[data-tab=playlists],
-      .tabs .item[data-tab=compendium],
-      .tabs .collapse
-        display: none
+      .tabs
+        .item[data-tab=scenes],
+        .item[data-tab=items],
+        .item[data-tab=journal],
+        .item[data-tab=tables],
+        .item[data-tab=cards],
+        .item[data-tab=playlists],
+        .item[data-tab=compendium],
+        .collapse
+          display: none
+      
+        .item
+          flex: 1 0 var(--sidebar-tab-width)
 
-      > *
+      > .tab
         overflow-y: auto
         flex: 1 1 0
 
   #chat
     grid-template-areas: "log log" "who controls" "form form"
+    grid-template-columns: auto 1fr
+    grid-template-rows: 1fr auto auto
 
     &.active
       display: grid
@@ -102,19 +114,23 @@
 
     &.sheet
       &.actor
-        &.character
-          ul.skills-list
-            flex-grow: 1
-
-          .sheet-header img.profile
-            display: none
+        .sheet-header img.profile
+          display: none
         
         .tab.attributes
+          flex-wrap: wrap
           overflow-y: auto
+
+          > *
+            margin-bottom: 5px
+          
+          .skills-list
+            flex: 1 0 auto
         
           .center-pane
             overflow-x: hidden
             overflow-y: auto
+            flex: 1 1 auto
         
         .tab.inventory
           .inventory-filters .currency
@@ -145,18 +161,21 @@
               grid-area: hcp
             input[name="data.currency.cp"]
               grid-area: cp
-        .spell-school
-          display: none
+        .tab.inventory,
+        .tab.features,
+        .tab.spellbook
+          .spell-school
+            display: none
 
-          + .item-controls
+          .item-controls
             flex: 0 0 30px
 
             .item-create,
             .item-delete
               display: none
-        .spell-action,
-        .spell-target
-          flex: 0 0 50px
+          .spell-action,
+          .spell-target
+            flex: 0 0 50px
 
       .sheet-navigation
         flex-wrap: wrap

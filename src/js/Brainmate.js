@@ -37,7 +37,7 @@ export default class Brainmate {
     return this.#mobileDetect;
   }
 
-  init() {
+  ready() {
     if (this.#settings.enabled && dependencies.warnIfAnyMissing()) {
       if (this.#settings.forceEnabled || this.#mobileDetect.mobile()) {
         if (!game.settings.get("core", "noCanvas")) {

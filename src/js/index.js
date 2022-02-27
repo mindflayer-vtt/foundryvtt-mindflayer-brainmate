@@ -30,7 +30,7 @@ import "../sass/index.sass";
   //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /**
-   * @type {Brainmate}
+   * @type {Brainmate|null}
    */
   let instance = null;
 
@@ -46,7 +46,9 @@ import "../sass/index.sass";
   Hooks.once("init", () => {
     instance = new Brainmate();
     setModuleInstance(instance);
+  });
 
-    instance.init();
+  Hooks.once("ready", () => {
+    instance.ready();
   });
 })();
