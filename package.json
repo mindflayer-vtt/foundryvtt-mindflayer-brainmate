@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
   "name": "foundryvtt-mindflayer-brainmate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "<div align=\"center\"> <img width=\"460\" src=\"https://raw.githubusercontent.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/main/.github/foundryvtt-mindflayer-logo.png\"> </div>",
   "private": true,
   "scripts": {
