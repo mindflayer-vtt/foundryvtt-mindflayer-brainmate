@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
+  "name": "foundryvtt-mindflayer-brainmate",
+  "version": "0.1.0",
+  "description": "<div align=\"center\"> <img width=\"460\" src=\"https://raw.githubusercontent.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/main/.github/foundryvtt-mindflayer-logo.png\"> </div>",
+  "private": true,
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "prod": "NODE_ENV=production webpack --config webpack.config.js",
+    "style": "prettier --write src/ *.json *.md webpack.config.js",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate.git"
+  },
+  "license": "GPL-3",
+  "bugs": {
+    "url": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/issues"
+  },
+  "homepage": "https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate#readme",
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.2",
+    "@semantic-release/npm": "^9.0.0",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.6.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "prettier": "2.5.1",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "semantic-release": "^19.0.2",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "mobile-detect": "^1.4.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

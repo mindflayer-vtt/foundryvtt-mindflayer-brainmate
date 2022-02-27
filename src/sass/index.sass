@@ -1,0 +1,174 @@
+/* Mind Flayer - Brainmate Styling */
+
+.brainmate-mobile
+  flex-direction: column-reverse
+
+  #ui-left
+    display: none
+
+  #ui-middle
+    flex: 0 0 auto
+    #ui-top
+      display: none
+
+  #hotbar
+    width: 100%
+    height: var(--hotbar-height)
+
+    #macro-list
+      grid-template-columns: repeat( 10, 10% )
+
+    .macro
+
+
+  #hotbar-directory-controls
+    display: none
+  
+  .macro-key
+    display: none
+    
+  #ui-right
+    flex: 1 1 0%
+
+    #sidebar
+      height: 100%
+      width: 100%
+
+      .tabs .item[data-tab=scenes],
+      .tabs .item[data-tab=items],
+      .tabs .item[data-tab=journal],
+      .tabs .item[data-tab=tables],
+      .tabs .item[data-tab=cards],
+      .tabs .item[data-tab=playlists],
+      .tabs .item[data-tab=compendium],
+      .tabs .collapse
+        display: none
+
+      > *
+        overflow-y: auto
+        flex: 1 1 0
+
+  #chat
+    grid-template-areas: "log log" "who controls" "form form"
+
+    &.active
+      display: grid
+    
+    .chat-control-icon,
+    .control-buttons
+      display: none
+
+  #chat-log
+    grid-area: log
+    height: unset
+  
+  #chat-controls
+    grid-area: controls
+
+  #chat-form
+    grid-area: form
+    height: unset
+    flex: 0 1 auto
+    
+  #chat-message
+    min-height: 1em
+
+  #hud
+    display: none
+  
+  #board
+    display: none
+
+  #pause
+    display: none
+  
+  .window-app
+    width: 100% !important
+    min-width: 0 !important
+    min-height: 0 !important
+    top: 0 !important
+    left: 0 !important
+    height: calc(100vh - var(--hotbar-height)) !important
+
+    .configure-sheet,
+    .configure-token,
+    .pop__btn-open,
+    .tit-menu__btn-open--sheet,
+    .window-resizable-handle
+      display: none !important
+    
+    .window-content
+      overflow: auto !important
+
+    &.sheet
+      &.actor
+        &.character
+          ul.skills-list
+            flex-grow: 1
+
+          .sheet-header img.profile
+            display: none
+        
+        .tab.attributes
+          overflow-y: auto
+        
+          .center-pane
+            overflow-x: hidden
+            overflow-y: auto
+        
+        .tab.inventory
+          .inventory-filters .currency
+            display: grid
+            grid-template-areas: "headline headline headline headline headline" "hpp hgp hep hsp hcp" "pp gp ep sp cp"
+            
+            h3
+              grid-area: headline
+              display: flex
+              justify-content: space-between
+            .pp
+              grid-area: hpp
+            input[name="data.currency.pp"]
+              grid-area: pp
+            .gp
+              grid-area: hgp
+            input[name="data.currency.gp"]
+              grid-area: gp
+            .ep
+              grid-area: hep
+            input[name="data.currency.ep"]
+              grid-area: ep
+            .sp
+              grid-area: hsp
+            input[name="data.currency.sp"]
+              grid-area: sp
+            .cp
+              grid-area: hcp
+            input[name="data.currency.cp"]
+              grid-area: cp
+        .spell-school
+          display: none
+
+          + .item-controls
+            flex: 0 0 30px
+
+            .item-create,
+            .item-delete
+              display: none
+        .spell-action,
+        .spell-target
+          flex: 0 0 50px
+
+      .sheet-navigation
+        flex-wrap: wrap
+
+        .item
+          flex: 1 0 auto
+          margin: 2px 5px
+
+  /* Module Specific */
+
+  #plutonium__backend-version
+    display: none
+
+  #dice-box-canvas
+    display: none

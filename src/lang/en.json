@@ -1,0 +1,7 @@
+{
+  "module.MindFlayer.Brainmate.setting.enabled.name": "Enable Mobile UI",
+  "module.MindFlayer.Brainmate.setting.enabled.hint": "Enables the module, activating the mobile UI tweaks if required",
+
+  "module.MindFlayer.Brainmate.setting.forceEnabled.name": "Force Mobile UI",
+  "module.MindFlayer.Brainmate.setting.forceEnabled.hint": "Active the mobile UI tweaks on all devices"
+}
