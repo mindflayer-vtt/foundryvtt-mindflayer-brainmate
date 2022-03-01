@@ -51,4 +51,8 @@ import "../sass/index.sass";
   Hooks.once("ready", () => {
     instance.ready();
   });
+
+  Hooks.on("renderChatLog", (chatLog, $elem, context) => {
+    instance.renderChatLog(chatLog, $elem, context);
+  });
 })();

@@ -27,6 +27,7 @@ export default class Brainmate {
   constructor() {
     this.#settings = settings.init();
     this.#mobileDetect = new MobileDetect(window.navigator.userAgent);
+    CONFIG.debug.hooks = true;
   }
 
   get settings() {
@@ -51,5 +52,42 @@ export default class Brainmate {
         game.settings.set("core", "noCanvas", false);
       }
     }
+  }
+
+  renderChatLog(chatLog, chatMsgElem, context) {
+    if (this.#settings.enabled && dependencies.warnIfAnyMissing(false)) {
+      if (this.#settings.forceEnabled || this.#mobileDetect.mobile()) {
+        const $ = jQuery;
+        const $chat = $(chatMsgElem).find("#chat-form");
+        if (!$chat.has("#chat-submit").length) {
+          $chat.append($('<button id="chat-submit" type="submit">✔️</button>'));
+          $chat.on("submit", this.#onChatSubmit.bind(this, chatLog));
+        }
+      }
+    }
+  }
+
+  /**
+   * @param {SubmitEvent} evt
+   */
+  #onChatSubmit(chatLog, evt) {
+    evt.preventDefault();
+    const $chatMessage = $(chatLog.element).find("#chat-message");
+
+    const message = $chatMessage.val();
+    if (!message) return;
+    ui.chat._pendingText = "";
+
+    // Prepare chat message data and handle result
+    return ui.chat
+      .processMessage(message)
+      .then(() => {
+        $chatMessage.val("");
+        ui.chat._remember(message);
+      })
+      .catch((error) => {
+        ui.notifications.error(error);
+        throw error;
+      });
   }
 }

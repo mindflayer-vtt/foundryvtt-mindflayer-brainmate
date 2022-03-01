@@ -1,15 +1,18 @@
 /* Mind Flayer - Brainmate Styling */
 
 .brainmate-mobile
+  position: relative
+  display: flex
   flex-direction: column
 
-  #ui-left
-    display: none
+  > *
+    display: none !important
 
   #ui-middle
+    display: block !important
     position: relative
     flex: 0 0 auto
-    order: 2
+    order: 1
     z-index: calc(var(--z-index-app) + 2)
 
     #ui-top
@@ -45,9 +48,10 @@
     display: none
     
   #ui-right
+    display: block !important
     position: relative
     flex: 1 1 0%
-    order: 1
+    order: 0
 
     #sidebar
       margin: 0
@@ -95,9 +99,18 @@
     grid-area: form
     height: unset
     flex: 0 1 auto
+    display: flex
+    align-items: stretch
+
+  #chat-submit
+    width: unset
+    flex: 0 1 auto
+    background: var(--background)
+    border: none
     
   #chat-message
     min-height: 1em
+    flex: 1 0 80%
 
   #hud
     display: none
@@ -109,12 +122,16 @@
     display: none
   
   .window-app
+    display: flex !important
+    flex-direction: column !important
     width: 100% !important
     min-width: 0 !important
     min-height: 0 !important
     top: 0 !important
     left: 0 !important
-    height: calc(100vh - var(--hotbar-height)) !important
+    height: auto !important
+    max-height: calc(100vh - var(--hotbar-height)) !important
+    overflow-y: hidden !important
 
     .configure-sheet,
     .configure-token,
