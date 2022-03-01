@@ -1,15 +1,21 @@
 /* Mind Flayer - Brainmate Styling */
 
 .brainmate-mobile
-  flex-direction: column-reverse
+  flex-direction: column
 
   #ui-left
     display: none
 
   #ui-middle
+    position: relative
     flex: 0 0 auto
+    order: 2
+    z-index: calc(var(--z-index-app) + 2)
+
     #ui-top
       display: none
+    #ui-bottom
+      overflow: visible
 
   #hotbar
     width: 100%
@@ -25,6 +31,11 @@
     
     .page-control[data-action="page-up"]
       display: none
+    
+    #context-menu
+      position: fixed
+      left: 0
+      right: 0
 
 
   #hotbar-directory-controls
@@ -34,9 +45,12 @@
     display: none
     
   #ui-right
+    position: relative
     flex: 1 1 0%
+    order: 1
 
     #sidebar
+      margin: 0
       height: 100%
       width: 100%
 
