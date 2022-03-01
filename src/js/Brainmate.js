@@ -46,14 +46,7 @@ export default class Brainmate {
         }
         console.log(LOG_PREFIX + "detected mobile device, restyling UI");
         jQuery("body").addClass("brainmate-mobile");
-        const characterBtn = jQuery(
-          '<a class="item" title="My Charactersheet"><i class="fas fa-user"></i></a>'
-        );
-        characterBtn.on(
-          "click",
-          this.#onOpenMyCharacter.bind(this, characterBtn[0])
-        );
-        jQuery("#sidebar-tabs").prepend(characterBtn);
+        this.addMyCharacterSheetBtn();
       } else if (game.settings.get("core", "noCanvas")) {
         console.log(LOG_PREFIX + "detected non-mobile device, enabling canvas");
         game.settings.set("core", "noCanvas", false);
@@ -72,6 +65,17 @@ export default class Brainmate {
         }
       }
     }
+  }
+
+  addMyCharacterSheetBtn() {
+    const characterBtn = jQuery(
+      '<a class="item" title="My Charactersheet"><i class="fas fa-user"></i></a>'
+    );
+    characterBtn.on(
+      "click",
+      this.#onOpenMyCharacter.bind(this, characterBtn[0])
+    );
+    jQuery("#sidebar-tabs").prepend(characterBtn);
   }
 
   /**
