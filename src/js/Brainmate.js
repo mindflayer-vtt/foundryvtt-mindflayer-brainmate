@@ -27,7 +27,6 @@ export default class Brainmate {
   constructor() {
     this.#settings = settings.init();
     this.#mobileDetect = new MobileDetect(window.navigator.userAgent);
-    CONFIG.debug.hooks = true;
   }
 
   get settings() {
