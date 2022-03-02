@@ -13,6 +13,7 @@
  * see <https://www.gnu.org/licenses/>.
  */
 import "../sass/index.sass";
+import { VTT_MODULE_NAME } from "./settings/constants";
 
 (function () {
   "use strict";
@@ -34,25 +35,62 @@ import "../sass/index.sass";
    */
   let instance = null;
 
+  /**
+   * @param {Event} evt
+   */
+  function initHistoryBackOverride(evt) {
+    evt.preventDefault();
+    history.pushState(null, null, location.href);
+    ClientKeybindings._onDismiss();
+  }
+
+  function wrapUsability(wrapper) {
+    const originalValue = game.data.options.debug;
+    game.data.options.debug = true;
+    const result = wrapper();
+    game.data.options.debug = originalValue;
+    return result;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //
   // Hooks
   //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  CONFIG.debug.hooks = true;
+
+  Hooks.on("libWrapper.Ready", () => {
+    libWrapper.register(
+      VTT_MODULE_NAME,
+      "Game.prototype._displayUsabilityErrors",
+      wrapUsability,
+      libWrapper.WRAPPER
+    );
+    libWrapper.register(
+      VTT_MODULE_NAME,
+      "Game.prototype._onWindowPopState",
+      initHistoryBackOverride,
+      libWrapper.OVERRIDE
+    );
+  });
+
   /**
    * Init hook
    */
-  Hooks.once("init", () => {
+  Hooks.once("init", function brainmate_init() {
     instance = new Brainmate();
     setModuleInstance(instance);
   });
 
-  Hooks.once("ready", () => {
+  Hooks.once("ready", function brainmate_ready() {
     instance.ready();
   });
 
-  Hooks.on("renderChatLog", (chatLog, $elem, context) => {
-    instance.renderChatLog(chatLog, $elem, context);
-  });
+  Hooks.on(
+    "renderChatLog",
+    function brainmate_renderChatLog(chatLog, $elem, context) {
+      instance.renderChatLog(chatLog, $elem, context);
+    }
+  );
 })();
