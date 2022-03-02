@@ -4,7 +4,7 @@
 
 # Foundry VTT - Mind Flayer Brainmate
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mindflayer-vtt/foundryvtt-mindflayer/CI)](https://github.com/mindflayer-vtt/foundryvtt-mindflayer/actions) [![GitHub Release](https://img.shields.io/github/release/mindflayer-vtt/foundryvtt-mindflayer.svg)](https://github.com/mindflayer-vtt/foundryvtt-mindflayer/releases/latest)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mindflayer-vtt/foundryvtt-mindflayer-brainmate/CI)](https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/actions) [![GitHub Release](https://img.shields.io/github/release/mindflayer-vtt/foundryvtt-mindflayer-brainmate.svg)](https://github.com/mindflayer-vtt/foundryvtt-mindflayer-brainmate/releases/latest)
 
 A Foundry VTT module, which redesigns the UI to be usable on a tablet or phone.
 
