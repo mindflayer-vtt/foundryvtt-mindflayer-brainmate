@@ -42,11 +42,11 @@
       bottom: calc(var(--macro-size) + 2px)
 
 
-  #hotbar-directory-controls
-    display: none
-  
+  #hotbar-directory-controls,
+  .ui__btn-open-menu,  
   .macro-key
     display: none
+
     
   #ui-right
     display: block !important
@@ -146,8 +146,57 @@
 
     &.sheet
       &.actor
+        .imp-cls__btn-sheet-level-up,
         .sheet-header img.profile
           display: none
+        
+        .tab
+
+          > *
+            padding: 0
+          .item.flexrow
+            flex-wrap: wrap
+            justify-content: flex-end
+
+            > *
+              flex: 1 0 1px
+              line-height: 30px
+              min-height: 30px
+              height: unset
+              white-space: unset
+
+            .item-summary
+              flex: unset
+
+            .items-header
+              height: auto
+
+            .item-name
+              flex: 0 0 100%
+              border-bottom: 1px solid #c9c7b8
+
+              @media (min-width: 600px)
+                flex: 3 0 1px
+                border-bottom: none
+
+            .ethck-item-controls,
+            .item-controls
+              flex: 0 0 auto
+
+              > *,
+              .item-control
+                font-size: 18px
+                margin: 0 3px
+
+            .item-create,
+            .item-delete
+              display: none
+
+        .tab.downtime
+          .item-name
+            flex-grow: 1
+          .item-detail
+            flex-grow: 6
         
         .tab.attributes
           flex-wrap: wrap
@@ -158,16 +207,26 @@
           
           .skills-list
             flex: 1 0 auto
+            height: unset
+
+            .skill
+              height: unset
         
           .center-pane
             overflow: hidden
             flex: 1 1 auto
             height: auto
+
+          @media (min-width: 700px)
+            .skills-list,
+            .center-pane
+              flex-basis: 200px
         
         .tab.inventory
           .inventory-filters .currency
             display: grid
             grid-template-areas: "headline headline headline headline headline" "hpp hgp hep hsp hcp" "pp gp ep sp cp"
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr
             
             h3
               grid-area: headline
@@ -199,18 +258,23 @@
           .spell-school
             display: none
 
-          .item-controls
-            flex: 0 0 30px
+          .spellbook-filters
+            display: flex
+            flex-direction: column
 
-            .item-create,
-            .item-delete
-              display: none
-          .spell-action,
-          .spell-target
-            flex: 0 0 50px
+            .spellcasting-ability
+              flex: 1 0 auto
+              width: 100%
+
+            .filter-list
+              max-width: unset
+
+              .filter-item
+                padding-top: 1rem
 
         .sheet-body
           overflow-y: auto
+          border-top: 1px solid #69675d
 
       .sheet-navigation
         flex-wrap: wrap
