@@ -46,7 +46,6 @@ export default class Brainmate {
         }
         console.log(LOG_PREFIX + "detected mobile device, restyling UI");
         jQuery("body").addClass("brainmate-mobile");
-        jQuery(this.addMyCharacterSheetBtn.bind(this));
       } else if (game.settings.get("core", "noCanvas")) {
         console.log(LOG_PREFIX + "detected non-mobile device, enabling canvas");
         game.settings.set("core", "noCanvas", false);
@@ -57,6 +56,7 @@ export default class Brainmate {
   renderChatLog(chatLog, chatMsgElem, context) {
     if (this.#settings.enabled && dependencies.warnIfAnyMissing(false)) {
       if (this.#settings.forceEnabled || this.#mobileDetect.mobile()) {
+        this.addMyCharacterSheetBtn();
         const $ = jQuery;
         const $chat = $(chatMsgElem).find("#chat-form");
         if (!$chat.has("#chat-submit").length) {
