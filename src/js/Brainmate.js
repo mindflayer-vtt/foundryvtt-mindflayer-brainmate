@@ -46,7 +46,7 @@ export default class Brainmate {
         }
         console.log(LOG_PREFIX + "detected mobile device, restyling UI");
         jQuery("body").addClass("brainmate-mobile");
-        this.addMyCharacterSheetBtn();
+        jQuery(this.addMyCharacterSheetBtn.bind(this));
       } else if (game.settings.get("core", "noCanvas")) {
         console.log(LOG_PREFIX + "detected non-mobile device, enabling canvas");
         game.settings.set("core", "noCanvas", false);
