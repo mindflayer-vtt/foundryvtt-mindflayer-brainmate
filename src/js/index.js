@@ -58,8 +58,6 @@ import { VTT_MODULE_NAME } from "./settings/constants";
   //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  CONFIG.debug.hooks = true;
-
   Hooks.on("libWrapper.Ready", () => {
     libWrapper.register(
       VTT_MODULE_NAME,
