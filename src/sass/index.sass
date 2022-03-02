@@ -5,11 +5,11 @@
   display: flex
   flex-direction: column
 
-  > *
+  #ui-left
     display: none !important
 
   #ui-middle
-    display: block !important
+    display: block
     position: relative
     flex: 0 0 auto
     order: 1
@@ -31,6 +31,8 @@
     .macro
       width: 100%
       margin: 0 2px
+      display: flex
+      justify-content: center
     
     .page-control[data-action="page-up"]
       display: none
@@ -43,13 +45,12 @@
 
 
   #hotbar-directory-controls,
-  .ui__btn-open-menu,  
   .macro-key
     display: none
 
     
   #ui-right
-    display: block !important
+    display: block
     position: relative
     flex: 1 1 0%
     order: 0
@@ -146,11 +147,20 @@
 
     &.sheet
       &.actor
-        .imp-cls__btn-sheet-level-up,
+        .imp-cls__btn-sheet-level-up
+          display: none !important
         .sheet-header img.profile
           display: none
         
         .tab
+
+          .items-header
+            height: auto
+            min-height: 2em
+
+            .item-detail,
+            .item-controls
+              display: none
 
           > *
             padding: 0
@@ -168,8 +178,6 @@
             .item-summary
               flex: unset
 
-            .items-header
-              height: auto
 
             .item-name
               flex: 0 0 100%
@@ -255,7 +263,9 @@
         .tab.inventory,
         .tab.features,
         .tab.spellbook
-          .spell-school
+          .spell-school,
+          .spell-action,
+          .spell-target
             display: none
 
           .spellbook-filters
@@ -282,6 +292,9 @@
         .item
           flex: 1 0 auto
           margin: 2px 5px
+
+  #client-settings section.content .settings-list
+    max-height: unset
 
   /* Module Specific */
 
