@@ -52,6 +52,17 @@ import { VTT_MODULE_NAME } from "./settings/constants";
     return result;
   }
 
+  function addCustomItemsToGameMenu(wrapper) {
+    const items = wrapper();
+    items['close'] = {
+      label: "MENU.Close",
+      icon: '<i class="fas fa-times"></i>',
+      enabled: true,
+      onClick: () => ui.menu.close()
+    };
+    return items;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //
   // Hooks
@@ -70,6 +81,12 @@ import { VTT_MODULE_NAME } from "./settings/constants";
       "Game.prototype._onWindowPopState",
       initHistoryBackOverride,
       libWrapper.OVERRIDE
+    );
+    libWrapper.register(
+      VTT_MODULE_NAME,
+      "MainMenu.prototype.items",
+      addCustomItemsToGameMenu,
+      libWrapper.WRAPPER
     );
   });
 
