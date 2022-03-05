@@ -55,7 +55,7 @@ import { VTT_MODULE_NAME } from "./settings/constants";
   function addCustomItemsToGameMenu(wrapper) {
     const items = wrapper();
     items['close'] = {
-      label: "MENU.Close",
+      label: "module.MindFlayer.Brainmate.MENU.Close",
       icon: '<i class="fas fa-times"></i>',
       enabled: true,
       onClick: () => ui.menu.close()
