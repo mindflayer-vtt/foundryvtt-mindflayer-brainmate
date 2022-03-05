@@ -5,6 +5,9 @@
   display: flex
   flex-direction: column
 
+  &.game
+    justify-content: center
+
   #ui-left
     display: none !important
 
@@ -123,20 +126,22 @@
   #pause
     display: none
   
+  #menu
+    top: auto !important
+
   .window-app
     display: flex !important
     flex-direction: column !important
     width: 100% !important
     min-width: 0 !important
     min-height: 0 !important
-    top: 0 !important
+    top: auto !important
     left: 0 !important
     height: auto !important
-    max-height: calc(100vh - var(--hotbar-height)) !important
+    max-height: 70vh !important
     overflow-y: hidden !important
 
-    .configure-sheet,
-    .configure-token,
+    .header-button:not(.close),
     .pop__btn-open,
     .tit-menu__btn-open--sheet,
     .window-resizable-handle
@@ -147,6 +152,10 @@
 
     &.sheet
       &.actor
+        top: 0 !important
+        height: 100vh !important
+        max-height: calc(100vh - var(--hotbar-height) - 7px) !important
+
         .imp-cls__btn-sheet-level-up
           display: none !important
         .sheet-header img.profile
@@ -176,8 +185,8 @@
               white-space: unset
 
             .item-summary
-              flex: unset
-
+              flex: 0 0 100%
+              line-height: 16px
 
             .item-name
               flex: 0 0 100%
@@ -283,9 +292,18 @@
               .filter-item
                 padding-top: 1rem
 
-        .sheet-body
-          overflow-y: auto
-          border-top: 1px solid #69675d
+      .sheet-body
+        overflow-y: auto !important
+        border-top: 1px solid #69675d
+
+        .editor
+          height: auto !important
+
+        .editor-edit
+          display: none !important
+
+      &.item
+        max-height: 70vh !important
 
       .sheet-navigation
         flex-wrap: wrap
