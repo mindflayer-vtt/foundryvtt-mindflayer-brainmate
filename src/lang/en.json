@@ -5,6 +5,5 @@
   "module.MindFlayer.Brainmate.setting.forceEnabled.name": "Force Mobile UI",
   "module.MindFlayer.Brainmate.setting.forceEnabled.hint": "Active the mobile UI tweaks on all devices",
 
-  "MENU.Reconnect": "Reconnect",
   "MENU.Close": "Close Menu"
 }
