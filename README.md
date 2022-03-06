@@ -8,6 +8,8 @@
 
 A Foundry VTT module, which redesigns the UI to be usable on a tablet or phone.
 
+In case you are interested about the origin of the name "Brainmate", you may read up on the [Brainmate Item](https://www.worldanvil.com/w/planejammer-chronicles-dungeonmasterloki/a/brainmate-item) on worldanvil.
+
 # Installation
 
 To install, follow these instructions:
@@ -19,6 +21,19 @@ To install, follow these instructions:
 # Usage Instructions
 
 Once activated the module will automatically enable if it detects a mobile device.
+
+For detection of mobile devices we use [mobile-detect](https://www.npmjs.com/package/mobile-detect), thus any device not recognized by the library will not be automatically detected. Because of this we added a setting which can force-enable the mobile view. The Setting is per-client, thus will only affect the current device/browser.
+
+**Note:** The first time you start VTT on a mobile device, Foundry VTT will load almost completely, only to reload the page afterwards. This is due to the setting for disabling the canvas (which holds the map). On the first load, the module detects that it is on a mobile device and disables the canvas, this causes VTT to reload the page.
+
+# Compatibility
+
+| Device          | Browser       | Compatibility | Known Issues |
+|-----------------|---------------|---------------|--------------|
+| Android Phone   | Google Chrome | ✅            | --           |
+| Android Tablett | Google Chrome | ✅            | --           |
+| iOS iPad        | Safari?       | 🚫            | reload loop  |
+| iOS iPhone      | ?             | ✅            | --           |
 
 # Development
 
