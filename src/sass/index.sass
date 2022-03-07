@@ -36,22 +36,21 @@
       margin: 0 2px
       display: flex
       justify-content: center
-    
+
     .page-control[data-action="page-up"]
       display: none
-    
+
     #context-menu
       position: fixed
-      left: 0
-      right: 0
-      bottom: calc(var(--macro-size) + 2px)
-
+      left: 5vw
+      bottom: calc(var(--macro-size) + 3px)
+      max-width: 90vw
+      text-align: center
 
   #hotbar-directory-controls,
   .macro-key
     display: none
 
-    
   #ui-right
     display: block
     position: relative
@@ -73,7 +72,7 @@
         .item[data-tab=compendium],
         .collapse
           display: none
-      
+
         .item
           flex: 1 0 var(--sidebar-tab-width)
 
@@ -88,7 +87,7 @@
 
     &.active
       display: grid
-    
+
     .chat-control-icon,
     .control-buttons
       display: none
@@ -96,7 +95,7 @@
   #chat-log
     grid-area: log
     height: unset
-  
+
   #chat-controls
     grid-area: controls
 
@@ -112,20 +111,20 @@
     flex: 0 1 auto
     border: 1px solid var(--color-border-dark)
     background: url(/ui/parchment.jpg) repeat
-    
+
   #chat-message
     min-height: 1em
     flex: 1 0 80%
 
   #hud
     display: none
-  
+
   #board
     display: none
 
   #pause
     display: none
-  
+
   #menu
     top: auto !important
 
@@ -146,7 +145,7 @@
     .tit-menu__btn-open--sheet,
     .window-resizable-handle
       display: none !important
-    
+
     .window-content
       overflow: auto !important
 
@@ -160,7 +159,7 @@
           display: none !important
         .sheet-header img.profile
           display: none
-        
+
         .tab
 
           .items-header
@@ -215,21 +214,21 @@
             flex-grow: 1
           .item-detail
             flex-grow: 6
-        
+
         .tab.attributes
           flex-wrap: wrap
           overflow-y: auto
 
           > *
             margin-bottom: 5px
-          
+
           .skills-list
             flex: 1 0 auto
             height: unset
 
             .skill
               height: unset
-        
+
           .center-pane
             overflow: hidden
             flex: 1 1 auto
@@ -239,13 +238,13 @@
             .skills-list,
             .center-pane
               flex-basis: 200px
-        
+
         .tab.inventory
           .inventory-filters .currency
             display: grid
             grid-template-areas: "headline headline headline headline headline" "hpp hgp hep hsp hcp" "pp gp ep sp cp"
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-            
+
             h3
               grid-area: headline
               display: flex
@@ -312,6 +311,9 @@
         .item
           flex: 1 0 auto
           margin: 2px 5px
+      
+      &.macro-sheet
+        height: 90vh !important
 
   #client-settings section.content .settings-list
     max-height: unset

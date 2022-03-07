@@ -29,7 +29,7 @@ For detection of mobile devices we use [mobile-detect](https://www.npmjs.com/pac
 # Compatibility
 
 | Device          | Browser       | Compatibility | Known Issues |
-|-----------------|---------------|---------------|--------------|
+| --------------- | ------------- | ------------- | ------------ |
 | Android Phone   | Google Chrome | ✅            | --           |
 | Android Tablett | Google Chrome | ✅            | --           |
 | iOS iPad        | Safari?       | 🚫            | reload loop  |
