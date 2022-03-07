@@ -48,7 +48,6 @@ export default class Brainmate {
         }
         console.log(LOG_PREFIX + "detected mobile device, restyling UI");
         jQuery("body").addClass("brainmate-mobile");
-        this.#chatLogRendered = true;
       } else if (game.settings.get("core", "noCanvas")) {
         console.log(LOG_PREFIX + "detected non-mobile device, enabling canvas");
         game.settings.set("core", "noCanvas", false);
@@ -66,6 +65,7 @@ export default class Brainmate {
           $chat.append($('<button id="chat-submit" type="submit">✔️</button>'));
           $chat.on("submit", this.#onChatSubmit.bind(this, chatLog));
         }
+        this.#chatLogRendered = true;
       }
     }
   }
