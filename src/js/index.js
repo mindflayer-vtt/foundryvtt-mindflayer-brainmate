@@ -13,7 +13,7 @@
  * see <https://www.gnu.org/licenses/>.
  */
 import "../sass/index.sass";
-import { VTT_MODULE_NAME } from "./settings/constants";
+import { VTT_MODULE_NAME, LOG_PREFIX } from "./settings/constants";
 
 (function () {
   "use strict";
@@ -44,21 +44,21 @@ import { VTT_MODULE_NAME } from "./settings/constants";
     ClientKeybindings._onDismiss();
   }
 
-  function wrapUsability(wrapper) {
+  function wrapUsability(wrapped) {
     const originalValue = game.data.options.debug;
     game.data.options.debug = true;
-    const result = wrapper();
+    const result = wrapped();
     game.data.options.debug = originalValue;
     return result;
   }
 
-  function addCustomItemsToGameMenu(wrapper) {
-    const items = wrapper();
-    items['close'] = {
+  function addCustomItemsToGameMenu(wrapped) {
+    const items = wrapped();
+    items["close"] = {
       label: "module.MindFlayer.Brainmate.MENU.Close",
       icon: '<i class="fas fa-times"></i>',
       enabled: true,
-      onClick: () => ui.menu.close()
+      onClick: () => ui.menu.close(),
     };
     return items;
   }
@@ -93,19 +93,22 @@ import { VTT_MODULE_NAME } from "./settings/constants";
   /**
    * Init hook
    */
-  Hooks.once("init", function brainmate_init() {
+  Hooks.once("init", () => {
+    console.debug(LOG_PREFIX + "Initializing Brainmate");
     instance = new Brainmate();
     setModuleInstance(instance);
   });
 
-  Hooks.once("ready", function brainmate_ready() {
+  Hooks.once("ready", () => {
     instance.ready();
+    console.debug(LOG_PREFIX + "Ready!");
   });
 
-  Hooks.on(
-    "renderChatLog",
-    function brainmate_renderChatLog(chatLog, $elem, context) {
-      instance.renderChatLog(chatLog, $elem, context);
-    }
-  );
+  Hooks.on("renderChatLog", (chatLog, $elem, context) => {
+    instance.renderChatLog(chatLog, $elem, context);
+  });
+
+  Hooks.on("renderChatMessage", (message, html, messageData) => {
+    instance.addPopSoundToMessage(message, html, messageData);
+  });
 })();

@@ -46,6 +46,8 @@ export default class Brainmate {
         }
         console.log(LOG_PREFIX + "detected mobile device, restyling UI");
         jQuery("body").addClass("brainmate-mobile");
+        // fix for keybindings.js:114 error
+        canvas.app = {};
       } else if (game.settings.get("core", "noCanvas")) {
         console.log(LOG_PREFIX + "detected non-mobile device, enabling canvas");
         game.settings.set("core", "noCanvas", false);
@@ -64,6 +66,19 @@ export default class Brainmate {
           $chat.on("submit", this.#onChatSubmit.bind(this, chatLog));
         }
       }
+    }
+  }
+
+  addPopSoundToMessage(message, html, messageData) {
+    // while chat renders, the renderChatMessage hook sometimes fires for every message
+    // so we need to suppress this function until we are done rendering
+    if (ui.chat._state !== Application.RENDER_STATES.RENDERED) return;
+
+    const isNotRoll = messageData.message.roll == undefined;
+    const isChatTabInactive = ui.sidebar._tabs[0].active !== "chat";
+    const isWindowOpen = Object.keys(ui.windows).length > 0;
+    if (isNotRoll && (isChatTabInactive || isWindowOpen)) {
+      message.data.sound = CONFIG.sounds.notification;
     }
   }
 
