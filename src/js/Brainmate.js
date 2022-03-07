@@ -23,8 +23,6 @@ export default class Brainmate {
   #settings = null;
   /** @type {MobileDetect|null} */
   #mobileDetect = null;
-  /** @type {boolean} */
-  #chatLogRendered = false;
 
   constructor() {
     this.#settings = settings.init();
@@ -65,7 +63,6 @@ export default class Brainmate {
           $chat.append($('<button id="chat-submit" type="submit">✔️</button>'));
           $chat.on("submit", this.#onChatSubmit.bind(this, chatLog));
         }
-        this.#chatLogRendered = true;
       }
     }
   }
@@ -73,7 +70,7 @@ export default class Brainmate {
   addPopSoundToMessage(message, html, messageData) {
     // while chat renders, the renderChatMessage hook sometimes fires for every message
     // so we need to suppress this function until we are done rendering
-    if (!this.#chatLogRendered) return;
+    if (ui.chat._state !== Application.RENDER_STATES.RENDERED) return;
 
     const isNotRoll = messageData.message.roll == undefined;
     const isChatTabInactive = ui.sidebar._tabs[0].active !== "chat";
