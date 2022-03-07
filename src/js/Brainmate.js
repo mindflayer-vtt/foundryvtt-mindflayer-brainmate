@@ -65,7 +65,6 @@ export default class Brainmate {
           $chat.append($('<button id="chat-submit" type="submit">✔️</button>'));
           $chat.on("submit", this.#onChatSubmit.bind(this, chatLog));
         }
-        this.#chatLogRendered = true;
       }
     }
   }
