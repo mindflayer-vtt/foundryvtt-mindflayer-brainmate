@@ -70,15 +70,19 @@ export default class Brainmate {
   }
 
   addPopSoundToMessage(message, html, messageData) {
-    // while chat renders, the renderChatMessage hook sometimes fires for every message
-    // so we need to suppress this function until we are done rendering
-    if (ui.chat._state !== Application.RENDER_STATES.RENDERED) return;
+    if (this.#settings.enabled && dependencies.warnIfAnyMissing(false)) {
+      if (this.#settings.forceEnabled || this.#mobileDetect.mobile()) {
+        // while chat renders, the renderChatMessage hook sometimes fires for every message
+        // so we need to suppress this function until we are done rendering
+        if (ui.chat._state !== Application.RENDER_STATES.RENDERED) return;
 
-    const isNotRoll = messageData.message.roll == undefined;
-    const isChatTabInactive = ui.sidebar._tabs[0].active !== "chat";
-    const isWindowOpen = Object.keys(ui.windows).length > 0;
-    if (isNotRoll && (isChatTabInactive || isWindowOpen)) {
-      message.data.sound = CONFIG.sounds.notification;
+        const isNotRoll = messageData.message.roll == undefined;
+        const isChatTabInactive = ui.sidebar._tabs[0].active !== "chat";
+        const isWindowOpen = Object.keys(ui.windows).length > 0;
+        if (isNotRoll && (isChatTabInactive || isWindowOpen)) {
+          message.data.sound = CONFIG.sounds.notification;
+        }
+      }
     }
   }
 
