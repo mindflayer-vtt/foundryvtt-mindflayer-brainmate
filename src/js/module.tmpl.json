@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/typhonjs-fvtt-lib/validate-manifest/main/schema/strict/module.json",
   "name": "mindflayer-brainmate",
   "title": "Mind Flayer - Brainmate",
   "version": "This is autoreplaced",
